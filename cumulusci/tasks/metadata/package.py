@@ -1,17 +1,15 @@
-from builtins import str
-from future import standard_library
-
-standard_library.install_aliases()
 import os
 import re
 import urllib.parse
-
-import xml.etree.ElementTree as ET
 from cumulusci.core.utils import ordered_yaml_load
-
 from cumulusci.core.tasks import BaseTask
 from cumulusci.utils import elementtree_parse_file
+from future import standard_library
 
+# from builtins import str
+# import xml.etree.ElementTree as ET
+
+standard_library.install_aliases()
 __location__ = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -360,6 +358,13 @@ class AuraBundleParser(MetadataFilenameParser):
         if item.startswith("."):
             return []
         return [item]
+
+
+class LightningComponentBundleParser(MetadataFolderParser):
+    def _parse_subitem(self, item, subitem):
+        # MetadataFolderParser includes folder as member
+        # folder is enough; Don't include any subitems
+        return []
 
 
 class DocumentParser(MetadataFolderParser):
