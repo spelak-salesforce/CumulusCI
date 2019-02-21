@@ -2,13 +2,14 @@ import os
 import re
 import urllib.parse
 
+# import xml.etree.ElementTree as ET # never used
+
 from cumulusci.core.utils import ordered_yaml_load
 from cumulusci.core.tasks import BaseTask
 from cumulusci.utils import elementtree_parse_file
 from future import standard_library
 
-# from builtins import str
-# import xml.etree.ElementTree as ET
+# from builtins import str # never used
 
 standard_library.install_aliases()
 __location__ = os.path.dirname(os.path.realpath(__file__))
